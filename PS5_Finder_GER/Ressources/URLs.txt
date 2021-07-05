@@ -1,0 +1,62 @@
+﻿inaktiv,Amazon,Controller,https://smile.amazon.de/Sony-DualSense-Wireless-Controller-PlayStation-5/dp/B08H99BPJN/ref=pd_vtp_5/262-6416210-0008446?pd_rd_w=nelfA&pf_rd_p=4e0c7b51-e41d-4568-8470-6e0da61f6c1d&pf_rd_r=WDAB67X76D21PCXJ4MV0&pd_rd_r=613f177c-ee09-4add-aaf1-a4655191e832&pd_rd_wg=DLrUD&pd_rd_i=B08H99BPJN&psc=1
+aktiv,Otto,beide,https://www.otto.de/technik/gaming/playstation/ps5/
+aktiv,Euronics,Disc,https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-konsole-4061856837826
+aktiv,Euronics,Digital,https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-digital-edition-konsole-4061856837833
+aktiv,Euronics,Bundle,https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-mit-laufwerk-bundle-konsole-inkl.-spiderman-miles-morales-4065327116823
+aktiv,Euronics,R&C Bundle,https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-mit-laufwerk-bundle-konsole-inkl.-ratched-und-clank-rift-apart-4065327148145
+aktiv,Müller,beide,https://www.mueller.de/multi-media/playstation-5/
+aktiv,Müller,Disk,https://www.mueller.de/p/playstation-5-konsole-2675305/
+aktiv,Müller,Digital,https://www.mueller.de/p/playstation-5-konsole-digital-edition-2675308/
+aktiv,Amazon,Disc,https://www.amazon.de/dp/B08H93ZRK9
+aktiv,Amazon,Digital,https://www.amazon.de/dp/B08H98GVK8
+aktiv,Amazon,PS5 + Marvel's Spiderman Ultimate Edition,https://www.amazon.de/dp/B091DZ8WZQ
+aktiv,Amazon,Ratchet & Clank Bundle,https://www.amazon.de/gp/product/B095Z1QGWJ
+aktiv,Amazon,Spider-Man Ultimate Edition inkl Spider-Man Remastered,https://www.amazon.de/Sony-PlayStation-Marvels-Spider-Man-Remastered/dp/B091DZ8WZQ
+aktiv,Expert,beide,https://ps5.expert.de/Themenwelten/Sony-PS5.html
+aktiv,Expert,Disk,https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364129744-playstation-r-5.html
+aktiv,Expert,Digital,https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364133744-playstation-r-5-digital-edition.html
+aktiv,Expert,Disk Bundle,https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364000744-playstation-r-5-sony-dualsensetm-wireless-controller.html
+aktiv,Expert,Digital Bundle,https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364100744-playstation-r-5-digital-edition-zusaetzlichen-sony-dualsensetm-wireless-controller.html
+inaktiv,Alternate,Disk,https://www.alternate.de/Sony-Interactive-Entertainment/PlayStation-5-Spielkonsole/html/product/1651220
+inaktiv,Alternate,Digital,https://www.alternate.de/Sony-Interactive-Entertainment/PlayStation-5-Digital-Edition-Spielkonsole/html/product/1651221
+inaktiv,Alternate,Bundle,https://www.alternate.de/Sony-Interactive-Entertainment/PlayStation-5-Spielkonsole/html/product/1750947
+inaktiv,Alternate,Spielkonsole inkl. 2. Controller + Returnal + Immortals Fenyx Rising,https://www.alternate.de/Sony-Interactive-Entertainment/PlayStation-5-Spielkonsole/html/product/1750947
+inaktiv,Alternate,Übersicht,https://www.alternate.de/PS5?zanpid=11731_1623763213_a51895358f11164e1be80761bf097660&awc=11731_1623763213_a51895358f11164e1be80761bf097660
+inaktiv,Alternate,MEga Bundle,https://www.alternate.de/Sony-Interactive-Entertainment/PlayStation-5-MEGA-Bundle-Spielkonsole/html/product/1718565
+aktiv,Conrad,Übersicht,https://www.conrad.de/de/aktionen/product-promotions/sony-ps5.html
+inaktiv,MyToys,Disk,https://www.mytoys.de/sony-ps5-playstation-5-konsole-inkl-laufwerk-17235694.html
+inaktiv,MyToys,Digital,https://www.mytoys.de/sony-ps5-playstation-5-konsole-digital-version-17235665.html
+inaktiv,Media Markt,PS5 Disc + 2.DualSense Controller,https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-dualsense%E2%84%A2-2715824.html
+inaktiv,Media Markt,SONY PlayStation®5 + HD Kamera,https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-hd-kamera-2715822.html
+inaktiv,Media Markt,PS5-Digital Edition + HD Kamera,https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-digital-edition-hd-kamera-2715823.html
+inaktiv,Saturn,SONY PlayStation®5 + Nioh Collection,https://www.saturn.de/de/product/_sony-playstation%C2%AE5-nioh-collection-2724659.html
+inaktiv,Saturn,SONY PlayStation®5-Digital Edition + DualSense,https://www.saturn.de/de/product/_sony-playstation%C2%AE5-digital-edition-dualsense%E2%84%A2-2715825.html
+inaktiv,Saturn,SONY PlayStation®5-Digital Edition + HD Kamera,https://www.saturn.de/de/product/_sony-playstation%C2%AE5-digital-edition-hd-kamera-2715823.html
+inaktiv,Media Markt,Disc,https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-2661938.html
+inaktiv,Media Markt,Digital,https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html
+inaktiv,Media Markt,SONY PlayStation®5 + Nioh Collection,https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-nioh-collection-2724659.html
+inaktiv,Media Markt,PS5 Digital Edition + Medienfernbedienung,https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-digital-edition-medienfernbedienung-2722423.html
+inaktiv,Saturn,Disk,https://www.saturn.de/de/product/_sony-playstation%C2%AE5-2661938.html
+inaktiv,Saturn,Digital,https://www.saturn.de/de/product/_sony-playstation%C2%AE5-digital-edition-2661939.html
+inaktiv,Saturn,Disk Controller Bundle,https://www.saturn.de/de/product/_sony-playstation%C2%AE5-dualsense%E2%84%A2-2715824.html
+inaktiv,Saturn,Bundle,https://www.saturn.de/de/product/_sony-ps5-digital-ps-plus-90-tage-mitgliedschaft-2739309.html
+inaktiv,Saturn,SONY PS5 + Marvel's Spider-Man Miles Morales,https://www.saturn.de/de/product/_sony-ps5-marvel-s-spider-man-miles-morales-2715827.html
+inaktiv,Saturn,SONY PS5 + Marvels Spider-Man Miles Morales Ultimate Edition,https://www.saturn.de/de/product/_sony-ps5-marvels-spider-man-miles-morales-ultimate-edition-2715826.html
+inaktiv,Saturn,SONY PS5 + Assassins Creed Valhalla,https://www.saturn.de/de/product/_sony-ps5-assassins-creed-valhalla-2715828.html
+inaktiv,Saturn,Demon Souls Bundle,https://www.saturn.de/de/product/_sony-playstation%C2%AE5-demon-s-souls-2724660.html
+inaktiv,Media Markt,Bundle,https://www.mediamarkt.de/de/product/_sony-ps5-returnal-marvel-s-spider-man-miles-morales-2739308.html
+inaktiv,Media Markt,Bundle,https://www.mediamarkt.de/de/product/_sony-ps5-digital-ps-plus-90-tage-mitgliedschaft-2739309.html
+inaktiv,Media Markt,SONY PS5 + Marvel's Spider-Man Miles Morales,https://www.mediamarkt.de/de/product/_sony-ps5-marvel-s-spider-man-miles-morales-2715827.html
+inaktiv,Media Markt,SONY PS5 + Marvels Spider-Man Miles Morales Ultimate Edition,https://www.mediamarkt.de/de/product/_sony-ps5-marvels-spider-man-miles-morales-ultimate-edition-2715826.html
+inaktiv,Media Markt,SONY PS5 + Assassins Creed Valhalla,https://www.mediamarkt.de/de/product/_sony-ps5-assassins-creed-valhalla-2715828.html
+inaktiv,Media Markt,Demon Souls Bundle,https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-demon-s-souls-2724660.html
+inaktiv,Saturn,SONY PlayStation®5 + HD Kamera,https://www.saturn.de/de/product/_sony-playstation%C2%AE5-hd-kamera-2715822.html
+inaktiv,Media Markt,PS5 Digital + 2.DualSense Controller,https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-digital-edition-dualsense%E2%84%A2-2715825.html
+inaktiv,Media Markt,SONY PlayStation®5 + NBA 2K21,https://www.mediamarkt.de/de/product/_sony-playstation%C2%AE5-nba-2k21-2725012.html
+aktiv,MediMax,Disk,https://www.medimax.de/p/1315336/playstation-5-825gb-ssd
+inaktiv,Medi Max,Übersicht,https://www.medimax.de/unterwellenborn/search/?text=playstation+5
+aktiv,Spielegrotte,Disc + 2.Controller + Returnal,https://www.spielegrotte.de/index.php?kat=100100&anr=44967
+aktiv,Spielegrotte,Disc + R&C + Rainbow Six + PSPlus Abo (3M),https://www.spielegrotte.de/index.php?kat=100100&anr=2064
+aktiv,Spielegrotte,Digital + PSPlus Abo (12 M),https://www.spielegrotte.de/index.php?kat=100100&anr=46080
+aktiv,Spielegrotte,Disc + Immortals Fenyx Rising + PSPlus Abo (12 M),https://www.spielegrotte.de/index.php?kat=100100&anr=1225
+aktiv,Gamestop,Übersicht,https://www.gamestop.de/PS5

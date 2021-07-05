@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.34" />
+    <PackageReference Include="NuGet.CommandLine" Version="5.9.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Selenium.WebDriver" Version="4.0.0-beta4" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="92.0.4515.4300-beta" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Ressources\AmazonKeyWords.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Ressources\NegativeKeyWords.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Ressources\PwUnAmazon.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Ressources\URLs.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Ressources\user-agents.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
