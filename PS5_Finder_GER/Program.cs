@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 *    Title: PS 5 Finder Germany
 *    Author: Mike Gafert
 *    Date: 02.07.2021
-*    Time: 12:13
-*    Code version: 1.3.55
+*    Time: 16:20
+*    Code version: 1.3.59
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
