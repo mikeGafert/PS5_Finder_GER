@@ -38,7 +38,6 @@ namespace PS5_Finder
             string AmazonKeywordsPath = ".\\Ressources\\AmazonKeyWords.txt"; // Pfad zur KeyWords datei
             string userAgentsRessourcesPath = ".\\Ressources\\user-agents.txt"; // Pfad zur KeyWords datei
             string userAgentsLogPath = Path.Combine(programmFolderPath, "user-agentslog.txt"); // Pfad zur userAgents datei
-            string MMSUserAgentsLogPath = Path.Combine(programmFolderPath, "MMS-user-agentslog.txt"); // Pfad zur MMS userAgents datei
             string urlFilePath = ".\\Ressources\\URLs.txt"; // Pfad zur URL datei
             string zugangsdatenAmazonPath = ".\\Ressources\\PwUnAmazon.txt"; // Pfad zur Zugangsdaten datei
 
@@ -147,7 +146,7 @@ namespace PS5_Finder
                             webData = await response.Content.ReadAsStringAsync();
 
                             // Statistische Werte für den verwendeten UserAgent in die UserAgentLogfile schreiben
-                            Extensions.writeUserAgentStatsLog(userAgentsLogPath, MMSUserAgentsLogPath, userAgentsArray, i, WebseitenListe, randomIndex);
+                            Extensions.writeUserAgentStatsLog(userAgentsLogPath, userAgentsArray, i, WebseitenListe, randomIndex);
                         }
                         // Falls die Webseite nicht ausgelesen werden kann
                         catch (HttpRequestException ex)
@@ -228,16 +227,7 @@ namespace PS5_Finder
 
                             case "media markt":
                             case "saturn":
-                                WebseitenListe[i].Verfuegbar = WebsiteHandlerMMS.CheckWebsite(negativeKeyWords, webData);
-
-                                // Bei MMS muss man zwischen den Abfragen 10 Sekunden warten
-                                if (WebseitenListe[i].Name.ToLower() == "media markt" || WebseitenListe[i].Name.ToLower() == "saturn")
-                                {
-                                    Console.WriteLine("Programm wartet 10 Sekunden vor der nächsten Abfrage...");
-                                    Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
-                                    Thread.Sleep(10000);
-                                }
-
+                                WebseitenListe[i].Verfuegbar = WebsiteHandlerMMS.CheckWebsite(negativeKeyWords, webData);   
                                 break;
 
                             default:
@@ -249,6 +239,11 @@ namespace PS5_Finder
                         // wird die entsprechende Webseite geöffnet
                         if (WebseitenListe[i].Verfuegbar && !success)
                         {
+                            // Es wird ein akustisches Signal in Form von Piepen abgespielt
+                            for (int j = 0; j < piepen; j++)
+                            {
+                                Console.Beep();
+                            }
 
                             switch (WebseitenListe[i].Name.ToLower())
                             {
@@ -257,16 +252,16 @@ namespace PS5_Finder
                                     string[] subs = WebseitenListe[i].Url.Split('?'); // Zerlegt die Zeile um die Affiliate
                                                                                       // Links nicht öffnen zu müssen
                                     Extensions.OpenUrl(subs[0]);
+
+                                    Console.WriteLine("Programm wartet 10 Sekunden vor der nächsten Abfrage...");
+                                    Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
+                                    Thread.Sleep(10000);
+
                                     break;
                                 default:
                                     Extensions.OpenUrl(WebseitenListe[i].Url);
                                     break;
-                            }
-                            // Außerdem wird ein akustisches Signal in Form von Piepen abgespielt
-                            for (int j = 0; j < piepen; j++)
-                            {
-                                Console.Beep();
-                            }
+                            }                            
                         }
 
                         // Eintrag des Ergebnisses für diese Webseite in die log.txt
@@ -274,8 +269,6 @@ namespace PS5_Finder
 
                         // Ausgabe des Ergebnisses dieser Webseite
                         Console.WriteLine(WebseitenListe[i]);
-
-                       
 
                         // Webseitenliste leeren, da sie zu Beginn der nächsten schleife neu eingelesen wird
                         WebseitenListe.Clear();

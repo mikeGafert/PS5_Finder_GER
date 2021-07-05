@@ -121,38 +121,21 @@ namespace PS5_Finder
             }
         }
 
-        public static void writeUserAgentStatsLog(string userAgentsPath, string MMSUserAgentsPath, string[,] userAgentsArray, int i, List<Webseite> WebseitenListe, int randomIndex)
+        public static void writeUserAgentStatsLog(string userAgentsPath, string[,] userAgentsArray, int i, List<Webseite> WebseitenListe, int randomIndex)
         {
-            if (WebseitenListe[i].Name.ToLower() == "media markt" || WebseitenListe[i].Name.ToLower() == "saturn")
+            int userAgentCount = Convert.ToInt32(userAgentsArray[randomIndex, 0]);
+
+            userAgentCount++;
+
+            userAgentsArray[randomIndex, 0] = userAgentCount.ToString();
+            using (StreamWriter sw = new StreamWriter(userAgentsPath))
             {
-                int userAgentCount = Convert.ToInt32(userAgentsArray[randomIndex, 0]);
-
-                userAgentCount++;
-
-                userAgentsArray[randomIndex, 0] = userAgentCount.ToString();
-                using (StreamWriter sw = new StreamWriter(MMSUserAgentsPath))
+                for (int j = 0; j < userAgentsArray.Length / 2; j++)
                 {
-                    for (int j = 0; j < userAgentsArray.Length / 2; j++)
-                    {
-                        sw.WriteLine($"{userAgentsArray[j, 0]},{userAgentsArray[j, 1]}");
-                    }
+                    sw.WriteLine($"{userAgentsArray[j, 0]},{userAgentsArray[j, 1]}");
                 }
             }
-            else
-            {
-                int userAgentCount = Convert.ToInt32(userAgentsArray[randomIndex, 0]);
 
-                userAgentCount++;
-
-                userAgentsArray[randomIndex, 0] = userAgentCount.ToString();
-                using (StreamWriter sw = new StreamWriter(userAgentsPath))
-                {
-                    for (int j = 0; j < userAgentsArray.Length / 2; j++)
-                    {
-                        sw.WriteLine($"{userAgentsArray[j, 0]},{userAgentsArray[j, 1]}");
-                    }
-                }
-            }
         }
 
         public static void writeWebsiteToTxtFile(string websiteCodePath, int i, List<Webseite> WebseitenListe, string webData)
