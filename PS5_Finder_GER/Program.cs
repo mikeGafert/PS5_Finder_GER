@@ -264,6 +264,20 @@ namespace PS5_Finder
                             }                            
                         }
 
+                        // Bei MMS muss 10 Sekunden zwischen den Abfragen gewartet werden                        
+                        switch (WebseitenListe[i].Name.ToLower())
+                        {
+                            case "media markt":
+                            case "saturn":                                
+                                Console.WriteLine("Programm wartet 10 Sekunden vor der nächsten Abfrage...");
+                                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
+                                Thread.Sleep(10000);
+
+                                break;
+                            default:                                
+                                break;
+                        }
+
                         // Eintrag des Ergebnisses für diese Webseite in die log.txt
                         Extensions.WriteLogfile(WebseitenListe, logtxtPath, i);
 

@@ -119,7 +119,7 @@ namespace PS5_Finder
     {
         public static bool CheckWebsite(string[] negativeKeyWords, string webData)
         {
-            //string[] KeyWordsArray = new string[] { "Abholung in der Filiale", "Lieferung nach Hause", "In den Warenkorb", "Voraussichtlich lieferbar" };
+            string[] KeyWordsArray = new string[] { "Abholbereit", "Lieferung", "In den Warenkorb", "Schützen Sie Ihr Gerät mit zusätzlichen Leistungen:" };
             bool verfuegbar = webData.Contains(negativeKeyWords, StringComparison.CurrentCulture);
             verfuegbar = !webData.Contains("Dieser Artikel ist aktuell nicht verfügbar.", StringComparison.CurrentCulture);
             return verfuegbar;

@@ -1,4 +1,4 @@
-﻿inaktiv,Amazon,Controller,https://smile.amazon.de/Sony-DualSense-Wireless-Controller-PlayStation-5/dp/B08H99BPJN/ref=pd_vtp_5/262-6416210-0008446?pd_rd_w=nelfA&pf_rd_p=4e0c7b51-e41d-4568-8470-6e0da61f6c1d&pf_rd_r=WDAB67X76D21PCXJ4MV0&pd_rd_r=613f177c-ee09-4add-aaf1-a4655191e832&pd_rd_wg=DLrUD&pd_rd_i=B08H99BPJN&psc=1
+﻿inaktiv,Test,Irgendwas,https://www.mediamarkt.de/de/product/_huawei-matebook-d-14-2705604.html
 aktiv,Otto,beide,https://www.otto.de/technik/gaming/playstation/ps5/
 aktiv,Euronics,Disc,https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-konsole-4061856837826
 aktiv,Euronics,Digital,https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-digital-edition-konsole-4061856837833
