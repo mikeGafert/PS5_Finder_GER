@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 *    Date: 02.07.2021
 *    Time: 12:13
 *    Code version: 1.3.55
-*    Availability: https://github.com/Gafert-IT/PS5-Finder
+*    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
 ***************************************************************************************/
@@ -226,6 +226,20 @@ namespace PS5_Finder
                                 WebseitenListe[i].Verfuegbar = WebsiteHandlerMueller.CheckWebsite(negativeKeyWords, webData);
                                 break;
 
+                            case "media markt":
+                            case "saturn":
+                                WebseitenListe[i].Verfuegbar = WebsiteHandlerMMS.CheckWebsite(negativeKeyWords, webData);
+
+                                // Bei MMS muss man zwischen den Abfragen 10 Sekunden warten
+                                if (WebseitenListe[i].Name.ToLower() == "media markt" || WebseitenListe[i].Name.ToLower() == "saturn")
+                                {
+                                    Console.WriteLine("Programm wartet 10 Sekunden vor der nächsten Abfrage...");
+                                    Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
+                                    Thread.Sleep(10000);
+                                }
+
+                                break;
+
                             default:
                                 WebseitenListe[i].Verfuegbar = !webData.Contains(negativeKeyWords, StringComparison.CurrentCulture);
                                 break;
@@ -235,7 +249,19 @@ namespace PS5_Finder
                         // wird die entsprechende Webseite geöffnet
                         if (WebseitenListe[i].Verfuegbar && !success)
                         {
-                            Extensions.OpenUrl(WebseitenListe[i].Url);
+
+                            switch (WebseitenListe[i].Name.ToLower())
+                            {
+                                case "media markt":
+                                case "saturn":
+                                    string[] subs = WebseitenListe[i].Url.Split('?'); // Zerlegt die Zeile um die Affiliate
+                                                                                      // Links nicht öffnen zu müssen
+                                    Extensions.OpenUrl(subs[0]);
+                                    break;
+                                default:
+                                    Extensions.OpenUrl(WebseitenListe[i].Url);
+                                    break;
+                            }
                             // Außerdem wird ein akustisches Signal in Form von Piepen abgespielt
                             for (int j = 0; j < piepen; j++)
                             {
@@ -249,13 +275,7 @@ namespace PS5_Finder
                         // Ausgabe des Ergebnisses dieser Webseite
                         Console.WriteLine(WebseitenListe[i]);
 
-                        // Bei MMS muss man zwischen den Abfragen 10 Sekunden warten
-                        if (WebseitenListe[i].Name.ToLower() == "media markt" || WebseitenListe[i].Name.ToLower() == "saturn")
-                        {
-                            Console.WriteLine("Programm wartet 10 Sekunden vor der nächsten Abfrage...");
-                            Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
-                            Thread.Sleep(10000);
-                        }
+                       
 
                         // Webseitenliste leeren, da sie zu Beginn der nächsten schleife neu eingelesen wird
                         WebseitenListe.Clear();

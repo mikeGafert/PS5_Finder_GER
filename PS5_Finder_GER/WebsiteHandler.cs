@@ -114,4 +114,15 @@ namespace PS5_Finder
             return verfuegbar;
         }
     }
+
+    static class WebsiteHandlerMMS
+    {
+        public static bool CheckWebsite(string[] negativeKeyWords, string webData)
+        {
+            //string[] KeyWordsArray = new string[] { "Abholung in der Filiale", "Lieferung nach Hause", "In den Warenkorb", "Voraussichtlich lieferbar" };
+            bool verfuegbar = webData.Contains(negativeKeyWords, StringComparison.CurrentCulture);
+            verfuegbar = !webData.Contains("Dieser Artikel ist aktuell nicht verfügbar.", StringComparison.CurrentCulture);
+            return verfuegbar;
+        }
+    }
 }
