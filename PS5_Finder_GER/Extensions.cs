@@ -27,19 +27,41 @@ namespace PS5_Finder
 
         public static string[,] ReadFileTo2DArray(string path)
         {
-            string[,] stringArray = new string[File.ReadAllLines(path).Length, 2];
-            using (StreamReader sr = new StreamReader(path))
+            if (File.Exists(path))
             {
-                for (int i = 0; i < File.ReadAllLines(path).Length; i++)
+                string[,] stringArray = new string[File.ReadAllLines(path).Length, 2];
+                using (StreamReader sr = new StreamReader(path))
                 {
-                    string zeile = sr.ReadLine(); // Die Datei wird Zeile für Zeile ausgelsen
-                    string[] subs = zeile.Split(",", 2); // Zerlegt die Zeile 1 mal in maxmial 2 Teile
-                    stringArray[i, 0] = subs[0];
-                    stringArray[i, 1] = subs[1];
+                    for (int i = 0; i < File.ReadAllLines(path).Length; i++)
+                    {
+                        string zeile = sr.ReadLine(); // Die Datei wird Zeile für Zeile ausgelsen
+                        string[] subs = zeile.Split(",", 2); // Zerlegt die Zeile 1 mal in maxmial 2 Teile
+                        stringArray[i, 0] = subs[0];
+                        stringArray[i, 1] = subs[1];
+                    }
                 }
+                return stringArray;
+            }
+            else
+            {
+                using (StreamWriter sw = new StreamWriter(path))
+                {
+                    sw.Write("Username,Password");
+                }
+                string[,] stringArray = new string[File.ReadAllLines(path).Length, 2];
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    for (int i = 0; i < File.ReadAllLines(path).Length; i++)
+                    {
+                        string zeile = sr.ReadLine(); // Die Datei wird Zeile für Zeile ausgelsen
+                        string[] subs = zeile.Split(",", 2); // Zerlegt die Zeile 1 mal in maxmial 2 Teile
+                        stringArray[i, 0] = subs[0];
+                        stringArray[i, 1] = subs[1];
+                    }
+                }
+                return stringArray;
             }
 
-            return stringArray;
         }
 
         public static List<Webseite> ReadURLFile(string urlPath)

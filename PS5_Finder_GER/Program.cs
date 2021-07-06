@@ -12,8 +12,8 @@ using System.Threading.Tasks;
 *    Title: PS 5 Finder Germany
 *    Author: Mike Gafert
 *    Date: 06.07.2021
-*    Time: 11:00
-*    Code version: 1.3.68
+*    Time: 11:40
+*    Code version: 1.3.69
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
@@ -40,7 +40,7 @@ namespace PS5_Finder
             string userAgentsRessourcesPath = ".\\Ressources\\user-agents.txt"; // Pfad zur KeyWords datei
             string userAgentsLogPath = Path.Combine(programmFolderPath, "user-agentslog.txt"); // Pfad zur userAgents datei
             string urlFilePath = ".\\Ressources\\URLs.txt"; // Pfad zur URL datei
-            string zugangsdatenAmazonPath = ".\\Ressources\\PwUnAmazon.txt"; // Pfad zur Zugangsdaten datei
+            string zugangsdatenAmazonPath = Path.Combine(programmFolderPath, "PwUnAmazon.txt"); // Pfad zur Zugangsdaten datei
 
             // Dateien einlesen, die beim Programmstart gelesen werden
             string[,] userAgentsArray = Extensions.getUserAgent(userAgentsRessourcesPath, userAgentsLogPath);
