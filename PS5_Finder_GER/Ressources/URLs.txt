@@ -1,4 +1,4 @@
-﻿inaktiv,Amazon,Irgendwas,https://www.amazon.de/gp/product/B08QD5XBPC
+﻿inaktiv,Amazon,Irgendwas,https://www.amazon.de/der-neue-echo-dot-4-generation-smarter-lautsprecher-mit-alexa-anthrazit/dp/B084DWG2VQ
 aktiv,Otto,beide,https://www.otto.de/technik/gaming/playstation/ps5/
 aktiv,Euronics,Disc,https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-konsole-4061856837826
 aktiv,Euronics,Digital,https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-digital-edition-konsole-4061856837833
