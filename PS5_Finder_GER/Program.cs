@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 *    Author: Mike Gafert
 *    Date: 06.07.2021
 *    Time: 09:37
-*    Code version: 1.3.64
+*    Code version: 1.3.65
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
@@ -57,9 +58,9 @@ namespace PS5_Finder
             int piepen = Convert.ToInt32(Console.ReadLine());
 
             // Autobuy abfragen
-            //Console.Write("Möchtest du auf Amazon.de die \"autobuy\" Funktion nutzen? (j/n): ");
-            //char autobuyNutzen = Console.ReadLine().ToLower()[0];
-            char autobuyNutzen = 'n';
+            Console.Write("Möchtest du auf Amazon.de die \"autobuy\" Funktion nutzen? (j/n): ");
+            char autobuyNutzen = Console.ReadLine().ToLower()[0];
+            //char autobuyNutzen = 'n';
 
             // Benutzernamen und Passwort abfragen
             string[,] zugangsdatenUserEingabe = new string[1, 2];
@@ -271,7 +272,7 @@ namespace PS5_Finder
                         {
                             case "media markt":
                             case "saturn":
-                                Console.WriteLine("Programm wartet 10 Sekunden vor der nächsten Abfrage...");
+                                Console.WriteLine("Programm wartet 10 Sekunden...");
                                 Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
                                 Thread.Sleep(10000);
 

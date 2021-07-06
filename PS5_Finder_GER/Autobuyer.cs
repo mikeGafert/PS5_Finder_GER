@@ -4,7 +4,7 @@ using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Support.UI;
 using System.Threading;
 using System;
-
+using OpenQA.Selenium.Firefox;
 
 namespace PS5_Finder
 {
@@ -21,7 +21,7 @@ namespace PS5_Finder
 
             bool ex = false;
 
-            driver = new ChromeDriver();
+            driver = new FirefoxDriver();
             //driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(homeURL);
             WebDriverWait wait = new WebDriverWait(driver, System.TimeSpan.FromSeconds(10));
@@ -32,6 +32,7 @@ namespace PS5_Finder
             // ACCEPT COOKIES
             try
             {
+                Thread.Sleep(2000);
                 ex = false;
                 driver.FindElement(By.Id("sp-cc-accept"));
             }
