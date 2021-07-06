@@ -251,12 +251,7 @@ namespace PS5_Finder
                                 case "saturn":
                                     string[] subs = WebseitenListe[i].Url.Split('?'); // Zerlegt die Zeile um die Affiliate
                                                                                       // Links nicht öffnen zu müssen
-                                    Extensions.OpenUrl(subs[0]);
-
-                                    Console.WriteLine("Programm wartet 10 Sekunden vor der nächsten Abfrage...");
-                                    Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
-                                    Thread.Sleep(10000);
-
+                                    Extensions.OpenUrl(subs[0]);                                    
                                     break;
                                 default:
                                     Extensions.OpenUrl(WebseitenListe[i].Url);
@@ -269,7 +264,7 @@ namespace PS5_Finder
                         {
                             case "media markt":
                             case "saturn":                                
-                                Console.WriteLine("Programm wartet 10 Sekunden vor der nächsten Abfrage...");
+                                Console.WriteLine("\nProgramm wartet 10 Sekunden vor der nächsten Abfrage...");
                                 Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
                                 Thread.Sleep(10000);
 
