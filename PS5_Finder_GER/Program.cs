@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 *    Author: Mike Gafert
 *    Date: 06.07.2021
 *    Time: 16:20
-*    Code version: 1.3.60
+*    Code version: 1.3.62
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
@@ -257,27 +257,27 @@ namespace PS5_Finder
                                     Extensions.OpenUrl(WebseitenListe[i].Url);
                                     break;
                             }                            
-                        }
-
-                        // Bei MMS muss 10 Sekunden zwischen den Abfragen gewartet werden                        
-                        switch (WebseitenListe[i].Name.ToLower())
-                        {
-                            case "media markt":
-                            case "saturn":                                
-                                Console.WriteLine("\nProgramm wartet 10 Sekunden vor der nächsten Abfrage...");
-                                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
-                                Thread.Sleep(10000);
-
-                                break;
-                            default:                                
-                                break;
-                        }
+                        }                        
 
                         // Eintrag des Ergebnisses für diese Webseite in die log.txt
                         Extensions.WriteLogfile(WebseitenListe, logtxtPath, i);
 
                         // Ausgabe des Ergebnisses dieser Webseite
                         Console.WriteLine(WebseitenListe[i]);
+
+                        // Bei MMS muss 10 Sekunden zwischen den Abfragen gewartet werden                        
+                        switch (WebseitenListe[i].Name.ToLower())
+                        {
+                            case "media markt":
+                            case "saturn":
+                                Console.WriteLine("\nProgramm wartet 10 Sekunden vor der nächsten Abfrage...");
+                                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
+                                Thread.Sleep(10000);
+
+                                break;
+                            default:
+                                break;
+                        }
 
                         // Webseitenliste leeren, da sie zu Beginn der nächsten schleife neu eingelesen wird
                         WebseitenListe.Clear();
