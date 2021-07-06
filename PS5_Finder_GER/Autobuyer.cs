@@ -338,29 +338,31 @@ namespace PS5_Finder
                     elementText = element.Text;
                 }
             }
-
-
+            
             // CLOSE DRIVER AND WINDOW
             driver.Close();
             driver.Quit();
 
-            // RETURN TRUE OR FALSE
-            if (elementText.Equals("Bestellungaufgegeben,danke!"))
-            {
-                return true;
-            }
-            else if (elementText.Equals("VielenDank,IhreBestellungwirdbearbeitet."))
-            {
-                return true;
-            }
-            else if (ex)
-            {
-                return false;
-            }
-            else
-            {
-                return false;
-            }
+            // Rückgabe
+            return checkPurchase;
+
+            //// RETURN TRUE OR FALSE
+            //if (elementText.Equals("Bestellung aufgegeben, danke!"))
+            //{
+            //    return true;
+            //}
+            //else if (elementText.Equals("Vielen Dank, Ihre Bestellung wird bearbeitet."))
+            //{
+            //    return true;
+            //}
+            //else if (ex)
+            //{
+            //    return false;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
         }
 
         public bool autobuyMediaMarktSaturnDE(string homeURL, string username, string password, int piepen)
