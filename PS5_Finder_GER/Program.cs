@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 *    Author: Mike Gafert
 *    Date: 06.07.2021
 *    Time: 11:40
-*    Code version: 1.3.69
+*    Code version: 1.3.70
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
@@ -36,7 +36,6 @@ namespace PS5_Finder
             string durchlaeufePath = Path.Combine(programmFolderPath, "durchlaeufe.txt"); // Pfad zur Durchläufe datei
             string botLogPath = Path.Combine(programmFolderPath, "botlog.txt"); // Pfad zur BotLog datei 
             string negativeKeywordsPath = ".\\Ressources\\NegativeKeyWords.txt"; // Pfad zur KeyWords datei
-            string AmazonKeywordsPath = ".\\Ressources\\AmazonKeyWords.txt"; // Pfad zur KeyWords datei
             string userAgentsRessourcesPath = ".\\Ressources\\user-agents.txt"; // Pfad zur KeyWords datei
             string userAgentsLogPath = Path.Combine(programmFolderPath, "user-agentslog.txt"); // Pfad zur userAgents datei
             string urlFilePath = ".\\Ressources\\URLs.txt"; // Pfad zur URL datei
@@ -204,12 +203,8 @@ namespace PS5_Finder
                         bool success = false; // variable für einen erfolgreichen autobuy Vorgang
                         switch (WebseitenListe[i].Name.ToLower())
                         {
-                            case "amazon":
-                                string[] amazonKeyWords = Extensions.ReadFileToArray(AmazonKeywordsPath);
-
-                                WebseitenListe[i].Verfuegbar = WebsiteHandlerAmazon.CheckWebsite(amazonKeyWords, webData, botLogPath);
-
-                                //WebsiteHandlerAmazon.CheckWebsiteWithHTMLAgilityPack(websiteCodePath, i, WebseitenListe, negativeKeyWords, webData, userAgent);
+                            case "amazon": 
+                                WebseitenListe[i].Verfuegbar = WebsiteHandlerAmazon.CheckWebsite(webData, botLogPath);    
 
                                 success = WebsiteHandlerAmazon.StartAutobuy(zugangsdatenAmazonPath, piepen, autobuyNutzen, zugangsdatenUserEingabe, zugangsdatenDateiNutzen, i, WebseitenListe, success);
 

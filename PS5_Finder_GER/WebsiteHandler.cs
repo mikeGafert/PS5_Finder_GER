@@ -9,9 +9,9 @@ namespace PS5_Finder
 {
     static class WebsiteHandlerAmazon
     {
-        public static bool CheckWebsite(string[] amazonKeyWords, string webData, string botLogPath)
+        public static bool CheckWebsite(string webData, string botLogPath)
         {
-            bool verfügbar = false;
+            bool verfügbar = false; 
             bool alsBotErkanntBool = webData.Contains("api-services-support@amazon.com", StringComparison.CurrentCulture);
             if (alsBotErkanntBool)
             {
@@ -29,34 +29,6 @@ namespace PS5_Finder
                 verfügbar = webData.Contains(KeyWordsArray, StringComparison.CurrentCulture);
             }
             return verfügbar;
-        }
-
-        public static void CheckWebsiteWithHTMLAgilityPack(string websiteCodePath, int i, List<Webseite> WebseitenListe, string[] negativeKeyWords, string webData, string userAgent)
-        {
-            HtmlWeb web = new HtmlWeb();
-            web.UserAgent = userAgent;
-            var htmlDoc = web.Load(WebseitenListe[i].Url);
-            HtmlNode[] nodes = htmlDoc.DocumentNode.SelectNodes("//div[@id='availability']").Where(x => x.InnerText.Contains("Auf Lager.")).ToArray();
-
-            // Den erhaltenen Inhalt der Webseite in eine txt Datei schrieben
-            string tempPath = Path.Combine(websiteCodePath, $"htmlDoc {WebseitenListe[i].Name} {WebseitenListe[i].Modell}.txt");
-            using (StreamWriter sw = new StreamWriter(tempPath))
-            {
-                foreach (var item in nodes)
-                {
-                    sw.WriteLine(item);
-                }
-
-            }
-
-            foreach (var item in nodes)
-            {
-                WebseitenListe[i].Verfuegbar = !webData.Contains(negativeKeyWords, StringComparison.CurrentCulture);
-                if (WebseitenListe[i].Verfuegbar)
-                {
-                    break;
-                }
-            }
         }
 
         public static bool StartAutobuy(string zugangsdatenAmazonPath, int piepen, char autobuyNutzen, string[,] zugangsdatenUserEingabe, char zugangsdatenDateiNutzen, int i, List<Webseite> WebseitenListe, bool success)
