@@ -12,8 +12,8 @@ using System.Threading.Tasks;
 *    Title: PS 5 Finder Germany
 *    Author: Mike Gafert
 *    Date: 06.07.2021
-*    Time: 11:40
-*    Code version: 1.3.70
+*    Time: 14:11
+*    Code version: 1.3.71
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
@@ -40,9 +40,15 @@ namespace PS5_Finder
             string userAgentsLogPath = Path.Combine(programmFolderPath, "user-agentslog.txt"); // Pfad zur userAgents datei
             string urlFilePath = ".\\Ressources\\URLs.txt"; // Pfad zur URL datei
             string zugangsdatenAmazonPath = Path.Combine(programmFolderPath, "PwUnAmazon.txt"); // Pfad zur Zugangsdaten datei
+            string zugangsdatenUnPwHowToPath = Path.Combine(programmFolderPath, "HOWTO add Username and Password.txt"); // Pfad zur Zugangsdaten HowTo datei
+
+            // Schreiben der Zugangsdaten HowTo datei
+            Extensions.writeUnPwHowToFile(zugangsdatenUnPwHowToPath);
 
             // Dateien einlesen, die beim Programmstart gelesen werden
             string[,] userAgentsArray = Extensions.getUserAgent(userAgentsRessourcesPath, userAgentsLogPath);
+            // Keyword aus der KeyWords.txt einlesen und in ein Array laden
+            string[] negativeKeyWords = Extensions.ReadFileToArray(negativeKeywordsPath);
 
             // Konsolen Fenstergröße festlegen, Breite: Standard, Höhe: 35
 #pragma warning disable CA1416 // Fehlermeldung der Plattformkompatibilität deaktivieren
@@ -85,6 +91,7 @@ namespace PS5_Finder
             handler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
             HttpClient client = new HttpClient(handler);
             client.Timeout = TimeSpan.FromSeconds(30);
+
             try // Fängt generelle Fehler ab
             {
                 // Dauerhafte Schleife. Ja, ich will das wirklich so!            
@@ -111,10 +118,7 @@ namespace PS5_Finder
                         {
                             Console.WriteLine($"{i + 1}.Seite inaktiv: {WebseitenListe[i].Name}\tModell: {WebseitenListe[i].Modell}");
                             continue;
-                        }
-
-                        // Keyword aus der KeyWords.txt während der Laufzeit neu einlesen und in ein Array laden
-                        string[] negativeKeyWords = Extensions.ReadFileToArray(negativeKeywordsPath);
+                        }                        
 
                         // Konsolen-Ausgabe der angefragten Webseite
                         Console.Write($"{i + 1}.Seite gestartet: {WebseitenListe[i].Name}\tModell: {WebseitenListe[i].Modell}\tVerfügbar: ");
@@ -162,31 +166,30 @@ namespace PS5_Finder
                                         retry++;
                                         goto retry;
                                     }
-                                    Console.WriteLine(ex.StatusCode);
-                                    Extensions.ErrorCodeNine(WebseitenListe, i);
+                                    Console.WriteLine(ex.StatusCode);                                    
                                     break;
                                 case HttpStatusCode.TooManyRequests:
                                 case HttpStatusCode.BadGateway:
                                 case HttpStatusCode.BadRequest:
                                 case HttpStatusCode.ServiceUnavailable:
-                                    Console.WriteLine(ex.StatusCode);
-                                    Extensions.ErrorCodeNine(WebseitenListe, i);
+                                    Console.WriteLine(ex.StatusCode);                                    
                                     break;
                                 default:
-                                    Console.WriteLine("kann aufgrund eines sonstigen Fehlers nicht ermittelt werden -> errorlog.txt");
-                                    Extensions.ErrorCodeNine(WebseitenListe, i);
+                                    Console.WriteLine("kann aufgrund eines sonstigen Fehlers nicht ermittelt werden -> errorlog.txt");  
                                     break;
                             } 
 
                             // Eintrag des des fehlers in die errorlog.txt                                
                             Extensions.WriteErrorLog(WebseitenListe, errorLogtxtPath, i, ex);
+                            Extensions.wait10SecForMMS(WebseitenListe, i);
                             continue;
                         }
                         catch (TaskCanceledException ex)
                         {
-                            Console.WriteLine(ex.Message);
-                            Extensions.ErrorCodeNine(WebseitenListe, i);
+                            Console.WriteLine(ex.Message);                            
+                            // Eintrag des des fehlers in die errorlog.txt   
                             Extensions.WriteErrorLog(WebseitenListe, errorLogtxtPath, i, ex);
+                            Extensions.wait10SecForMMS(WebseitenListe, i);
                             continue;
                         }
                         Console.ForegroundColor = ConsoleColor.White;
@@ -242,6 +245,7 @@ namespace PS5_Finder
                                 Console.Beep();
                             }
 
+                            // Bei MMS wird noch der Affiliate Link entfert, bevor die Seite geöffnet wird
                             switch (WebseitenListe[i].Name.ToLower())
                             {
                                 case "media markt":
@@ -262,19 +266,7 @@ namespace PS5_Finder
                         // Ausgabe des Ergebnisses dieser Webseite
                         Console.WriteLine(WebseitenListe[i]);
 
-                        // Bei MMS muss 10 Sekunden zwischen den Abfragen gewartet werden                        
-                        switch (WebseitenListe[i].Name.ToLower())
-                        {
-                            case "media markt":
-                            case "saturn":
-                                Console.WriteLine("Programm wartet 10 Sekunden...");
-                                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
-                                Thread.Sleep(10000);
-
-                                break;
-                            default:
-                                break;
-                        }
+                        Extensions.wait10SecForMMS(WebseitenListe, i);
 
                         // Webseitenliste leeren, da sie zu Beginn der nächsten schleife neu eingelesen wird
                         WebseitenListe.Clear();

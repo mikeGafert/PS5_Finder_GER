@@ -11,7 +11,7 @@ namespace PS5_Finder
     {
         public static bool CheckWebsite(string webData, string botLogPath)
         {
-            bool verfügbar = false; 
+            bool verfügbar = false;
             bool alsBotErkanntBool = webData.Contains("api-services-support@amazon.com", StringComparison.CurrentCulture);
             if (alsBotErkanntBool)
             {
@@ -37,13 +37,29 @@ namespace PS5_Finder
             {
                 if (zugangsdatenDateiNutzen == 'j')
                 {
-                    // Zugangsdaten einlesen            
-                    string[,] zugangsdatenAmazon = Extensions.ReadFileTo2DArray(zugangsdatenAmazonPath);
-                    for (int j = 0; j < File.ReadAllLines(zugangsdatenAmazonPath).Length; j++)
+                    // Zugangsdaten einlesen
+                    if (!File.Exists(zugangsdatenAmazonPath))
                     {
-                        Autobuyer Amazon = new();
-                        success = Amazon.autobuyAmazonDE(WebseitenListe[i].Url, zugangsdatenAmazon[j, 0], zugangsdatenAmazon[j, 1], piepen);
+                        using (StreamWriter sw = new StreamWriter(zugangsdatenAmazonPath))
+                        {
+                            sw.Write("Username,Password");
+                        }                        
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nBitte erst deine Zugangsdaten in ..\\Eigene Dokumente\\PS5 Finder\\PwUnAmazon.txt eingeben.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        success = false;
                     }
+                    // Autobuy nur starten, wenn Zugangsdaten gefunden wurden
+                    else
+                    {
+                        string[,] zugangsdatenAmazon = Extensions.ReadFileTo2DArray(zugangsdatenAmazonPath);
+
+                        for (int j = 0; j < File.ReadAllLines(zugangsdatenAmazonPath).Length; j++)
+                        {
+                            Autobuyer Amazon = new();
+                            success = Amazon.autobuyAmazonDE(WebseitenListe[i].Url, zugangsdatenAmazon[j, 0], zugangsdatenAmazon[j, 1], piepen);
+                        }
+                    }                    
                 }
                 else
                 {

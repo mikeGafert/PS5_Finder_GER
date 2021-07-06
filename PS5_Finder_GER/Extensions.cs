@@ -27,41 +27,18 @@ namespace PS5_Finder
 
         public static string[,] ReadFileTo2DArray(string path)
         {
-            if (File.Exists(path))
+            string[,] stringArray = new string[File.ReadAllLines(path).Length, 2];
+            using (StreamReader sr = new StreamReader(path))
             {
-                string[,] stringArray = new string[File.ReadAllLines(path).Length, 2];
-                using (StreamReader sr = new StreamReader(path))
+                for (int i = 0; i < File.ReadAllLines(path).Length; i++)
                 {
-                    for (int i = 0; i < File.ReadAllLines(path).Length; i++)
-                    {
-                        string zeile = sr.ReadLine(); // Die Datei wird Zeile für Zeile ausgelsen
-                        string[] subs = zeile.Split(",", 2); // Zerlegt die Zeile 1 mal in maxmial 2 Teile
-                        stringArray[i, 0] = subs[0];
-                        stringArray[i, 1] = subs[1];
-                    }
+                    string zeile = sr.ReadLine(); // Die Datei wird Zeile für Zeile ausgelsen
+                    string[] subs = zeile.Split(",", 2); // Zerlegt die Zeile 1 mal in maxmial 2 Teile
+                    stringArray[i, 0] = subs[0];
+                    stringArray[i, 1] = subs[1];
                 }
-                return stringArray;
             }
-            else
-            {
-                using (StreamWriter sw = new StreamWriter(path))
-                {
-                    sw.Write("Username,Password");
-                }
-                string[,] stringArray = new string[File.ReadAllLines(path).Length, 2];
-                using (StreamReader sr = new StreamReader(path))
-                {
-                    for (int i = 0; i < File.ReadAllLines(path).Length; i++)
-                    {
-                        string zeile = sr.ReadLine(); // Die Datei wird Zeile für Zeile ausgelsen
-                        string[] subs = zeile.Split(",", 2); // Zerlegt die Zeile 1 mal in maxmial 2 Teile
-                        stringArray[i, 0] = subs[0];
-                        stringArray[i, 1] = subs[1];
-                    }
-                }
-                return stringArray;
-            }
-
+            return stringArray;
         }
 
         public static List<Webseite> ReadURLFile(string urlPath)
@@ -169,6 +146,21 @@ namespace PS5_Finder
             }
         }
 
+        public static void writeUnPwHowToFile(string zugangsdatenUnPwHowToPath)
+        {
+            using (StreamWriter sw = new StreamWriter(zugangsdatenUnPwHowToPath))
+            {
+                sw.Write("## How to add Username and Password:\n\n" +
+                            "## Open the \"PwUn\"-File related to the website you want to use autobuy\n" +
+                            "## Add ONE Useraccount per line\n" +
+                            "## seperate Username/E-Mail Address and Password by \",\"\n\n" +
+                            "## for Example:\n" +
+                            "user@mail.com, P@ssword\n" +
+                            "user2@anotheremail.net, myP@ssword\n" +
+                            "thebestuser, myveryownP@ssword");
+            }
+        }
+
         // andere Methoden
         public static string[,] getUserAgent(string userAgentsRessourcesPath, string userAgentsPath)
         {
@@ -249,14 +241,19 @@ namespace PS5_Finder
             }
         }
 
-        public static void ErrorCodeNine(List<Webseite> WebseitenListe, int i)
-        {
-            // Bei MMS muss man zwischen den Abfragen 10 Sekunden warten
-            if (WebseitenListe[i].Name.ToLower() == "media markt" || WebseitenListe[i].Name.ToLower() == "saturn")
+        public static void wait10SecForMMS(List<Webseite> WebseitenListe, int i)
+        {// Bei MMS muss 10 Sekunden zwischen den Abfragen gewartet werden                        
+            switch (WebseitenListe[i].Name.ToLower())
             {
-                Console.WriteLine("Programm wartet 10 Sekunden vor der nächsten Abfrage...");
-                Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
-                Thread.Sleep(10000);
+                case "media markt":
+                case "saturn":
+                    Console.WriteLine("Programm wartet 10 Sekunden...");
+                    Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
+                    Thread.Sleep(10000);
+
+                    break;
+                default:
+                    break;
             }
         }
 
