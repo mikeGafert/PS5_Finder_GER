@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 *    Title: PS 5 Finder Germany
 *    Author: Mike Gafert
 *    Date: 06.07.2021
-*    Time: 16:20
-*    Code version: 1.3.62
+*    Time: 08:20
+*    Code version: 1.3.63
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
@@ -270,7 +270,7 @@ namespace PS5_Finder
                         {
                             case "media markt":
                             case "saturn":
-                                Console.WriteLine("\nProgramm wartet 10 Sekunden vor der nächsten Abfrage...");
+                                Console.WriteLine("Programm wartet 10 Sekunden vor der nächsten Abfrage...");
                                 Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
                                 Thread.Sleep(10000);
 
