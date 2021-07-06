@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 *    Title: PS 5 Finder Germany
 *    Author: Mike Gafert
 *    Date: 06.07.2021
-*    Time: 08:20
-*    Code version: 1.3.63
+*    Time: 09:37
+*    Code version: 1.3.64
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
@@ -176,19 +176,20 @@ namespace PS5_Finder
                                     Console.WriteLine("kann aufgrund eines sonstigen Fehlers nicht ermittelt werden -> errorlog.txt");
                                     Extensions.ErrorCodeNine(WebseitenListe, i);
                                     break;
-                            }
-                            Console.ForegroundColor = ConsoleColor.White;
+                            } 
 
                             // Eintrag des des fehlers in die errorlog.txt                                
                             Extensions.WriteErrorLog(WebseitenListe, errorLogtxtPath, i, ex);
                             continue;
                         }
-                        catch (TimeoutException ex)
+                        catch (TaskCanceledException ex)
                         {
+                            Console.WriteLine(ex.Message);
                             Extensions.ErrorCodeNine(WebseitenListe, i);
                             Extensions.WriteErrorLog(WebseitenListe, errorLogtxtPath, i, ex);
                             continue;
                         }
+                        Console.ForegroundColor = ConsoleColor.White;
 
                         // Den erhaltenen Inhalt der Webseite in eine txt Datei schrieben
                         Extensions.writeWebsiteToTxtFile(websiteCodePath, i, WebseitenListe, webData);
@@ -297,7 +298,7 @@ namespace PS5_Finder
                     Console.Beep();
                 }
             }
-            // Fängt generelle Fehler ab
+            // Fängt generelle Fehler ab            
             catch (Exception ex)
             {
                 using (StreamWriter sw = new StreamWriter(errorLogtxtPath, true))
@@ -306,6 +307,7 @@ namespace PS5_Finder
                     sw.WriteLine($"{dateError}\n{ex}");
                 }
             }
+            
         }
     }
 }
