@@ -8,11 +8,9 @@ aktiv,Müller,beide,https://www.mueller.de/multi-media/playstation-5/
 aktiv,Müller,Disk,https://www.mueller.de/p/playstation-5-konsole-2675305/
 aktiv,Müller,Digital,https://www.mueller.de/p/playstation-5-konsole-digital-edition-2675308/
 aktiv,Amazon,Disc,https://www.amazon.de/dp/B08H93ZRK9
-aktiv,Amazon,Disk,https://www.amazon.de/Sony-Interactive-Entertainment-PlayStation-5/dp/B08H93ZRK9
 aktiv,Amazon,Digital,https://www.amazon.de/dp/B08H98GVK8
 aktiv,Amazon,PS5 + Spiderman UE,https://www.amazon.de/dp/B091DZ8WZQ
 aktiv,Amazon,R&C Bundle,https://www.amazon.de/gp/product/B095Z1QGWJ
-aktiv,Amazon,Spider-Man UE & Spider-Man Remastered,https://www.amazon.de/Sony-PlayStation-Marvels-Spider-Man-Remastered/dp/B091DZ8WZQ
 aktiv,Expert,Übersicht,https://ps5.expert.de/Themenwelten/Sony-PS5.html
 aktiv,Expert,Disk,https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364129744-playstation-r-5.html
 aktiv,Expert,Digital,https://www.expert.de/shop/unsere-produkte/gaming-freizeit/sony-playstation/playstation-konsolen/11364133744-playstation-r-5-digital-edition.html

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -13,7 +11,7 @@ using System.Threading.Tasks;
 *    Author: Mike Gafert
 *    Date: 06.07.2021
 *    Time: 14:11
-*    Code version: 1.3.71
+*    Code version: 1.3.72
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
@@ -41,9 +39,15 @@ namespace PS5_Finder
             string urlFilePath = ".\\Ressources\\URLs.txt"; // Pfad zur URL datei
             string zugangsdatenAmazonPath = Path.Combine(programmFolderPath, "PwUnAmazon.txt"); // Pfad zur Zugangsdaten datei
             string zugangsdatenUnPwHowToPath = Path.Combine(programmFolderPath, "HOWTO add Username and Password.txt"); // Pfad zur Zugangsdaten HowTo datei
+            string UserURLsPath = Path.Combine(programmFolderPath, "URLs.txt"); // Pfad zur Zugangsdaten HowTo datei
 
             // Schreiben der Zugangsdaten HowTo datei
             Extensions.writeUnPwHowToFile(zugangsdatenUnPwHowToPath);
+            // URL Datei aus den Vorgaben kopieren und speichern
+            if (!File.Exists(UserURLsPath))
+            {
+                Extensions.UrlDateiSchreiben(urlFilePath, UserURLsPath);
+            }
 
             // Dateien einlesen, die beim Programmstart gelesen werden
             string[,] userAgentsArray = Extensions.getUserAgent(userAgentsRessourcesPath, userAgentsLogPath);
@@ -118,7 +122,7 @@ namespace PS5_Finder
                         {
                             Console.WriteLine($"{i + 1}.Seite inaktiv: {WebseitenListe[i].Name}\tModell: {WebseitenListe[i].Modell}");
                             continue;
-                        }                        
+                        }
 
                         // Konsolen-Ausgabe der angefragten Webseite
                         Console.Write($"{i + 1}.Seite gestartet: {WebseitenListe[i].Name}\tModell: {WebseitenListe[i].Modell}\tVerfügbar: ");
@@ -166,18 +170,18 @@ namespace PS5_Finder
                                         retry++;
                                         goto retry;
                                     }
-                                    Console.WriteLine(ex.StatusCode);                                    
+                                    Console.WriteLine(ex.StatusCode);
                                     break;
                                 case HttpStatusCode.TooManyRequests:
                                 case HttpStatusCode.BadGateway:
                                 case HttpStatusCode.BadRequest:
                                 case HttpStatusCode.ServiceUnavailable:
-                                    Console.WriteLine(ex.StatusCode);                                    
+                                    Console.WriteLine(ex.StatusCode);
                                     break;
                                 default:
-                                    Console.WriteLine("kann aufgrund eines sonstigen Fehlers nicht ermittelt werden -> errorlog.txt");  
+                                    Console.WriteLine("kann aufgrund eines sonstigen Fehlers nicht ermittelt werden -> errorlog.txt");
                                     break;
-                            } 
+                            }
 
                             // Eintrag des des fehlers in die errorlog.txt                                
                             Extensions.WriteErrorLog(WebseitenListe, errorLogtxtPath, i, ex);
@@ -186,7 +190,7 @@ namespace PS5_Finder
                         }
                         catch (TaskCanceledException ex)
                         {
-                            Console.WriteLine(ex.Message);                            
+                            Console.WriteLine(ex.Message);
                             // Eintrag des des fehlers in die errorlog.txt   
                             Extensions.WriteErrorLog(WebseitenListe, errorLogtxtPath, i, ex);
                             Extensions.wait10SecForMMS(WebseitenListe, i);
@@ -206,8 +210,8 @@ namespace PS5_Finder
                         bool success = false; // variable für einen erfolgreichen autobuy Vorgang
                         switch (WebseitenListe[i].Name.ToLower())
                         {
-                            case "amazon": 
-                                WebseitenListe[i].Verfuegbar = WebsiteHandlerAmazon.CheckWebsite(webData, botLogPath);    
+                            case "amazon":
+                                WebseitenListe[i].Verfuegbar = WebsiteHandlerAmazon.CheckWebsite(webData, botLogPath);
 
                                 success = WebsiteHandlerAmazon.StartAutobuy(zugangsdatenAmazonPath, piepen, autobuyNutzen, zugangsdatenUserEingabe, zugangsdatenDateiNutzen, i, WebseitenListe, success);
 
@@ -227,7 +231,7 @@ namespace PS5_Finder
 
                             case "media markt":
                             case "saturn":
-                                WebseitenListe[i].Verfuegbar = WebsiteHandlerMMS.CheckWebsite(negativeKeyWords, webData);   
+                                WebseitenListe[i].Verfuegbar = WebsiteHandlerMMS.CheckWebsite(negativeKeyWords, webData);
                                 break;
 
                             default:
@@ -252,13 +256,13 @@ namespace PS5_Finder
                                 case "saturn":
                                     string[] subs = WebseitenListe[i].Url.Split('?'); // Zerlegt die Zeile um die Affiliate
                                                                                       // Links nicht öffnen zu müssen
-                                    Extensions.OpenUrl(subs[0]);                                    
+                                    Extensions.OpenUrl(subs[0]);
                                     break;
                                 default:
                                     Extensions.OpenUrl(WebseitenListe[i].Url);
                                     break;
-                            }                            
-                        }                        
+                            }
+                        }
 
                         // Eintrag des Ergebnisses für diese Webseite in die log.txt
                         Extensions.WriteLogfile(WebseitenListe, logtxtPath, i);
@@ -281,7 +285,11 @@ namespace PS5_Finder
                     // Durchlauf erhöhen und Logfile aktualisieren
                     durchlauf++;
                     Extensions.WriteSingleIntToFile(durchlaeufePath, durchlauf);
+
+                    // Programm wartet die vorher abgefragten Minuten
                     Thread.Sleep(pause);
+
+                    // Weiter gehts!
                     Console.Clear();
                     Console.Beep();
                 }
@@ -295,7 +303,6 @@ namespace PS5_Finder
                     sw.WriteLine($"{dateError}\n{ex}");
                 }
             }
-            
         }
     }
 }

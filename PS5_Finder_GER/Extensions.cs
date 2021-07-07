@@ -1,11 +1,7 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Net;
 using System.Runtime.InteropServices;
 using System.Threading;
 
@@ -257,5 +253,18 @@ namespace PS5_Finder
             }
         }
 
+        public static void UrlDateiSchreiben(string urlFilePath, string UserURLsPath)
+        {
+            string[] tempStringArray = ReadFileToArray(urlFilePath);
+
+
+            using (StreamWriter sw = new StreamWriter(UserURLsPath))
+            {
+                for (int i = 0; i < tempStringArray.Length; i++)
+                {
+                    sw.WriteLine(tempStringArray[i]);
+                }
+            }
+        }
     }
 }
