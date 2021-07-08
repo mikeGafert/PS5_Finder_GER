@@ -4,7 +4,6 @@ aktiv,Euronics,Disc,https://www.euronics.de/spiele-und-konsolen-film-und-musik/s
 aktiv,Euronics,Digital,https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-digital-edition-konsole-4061856837833
 aktiv,Euronics,Bundle,https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-mit-laufwerk-bundle-konsole-inkl.-spiderman-miles-morales-4065327116823
 aktiv,Euronics,R&C Bundle,https://www.euronics.de/spiele-und-konsolen-film-und-musik/spiele-und-konsolen/playstation-5/spielekonsole/playstation-5-mit-laufwerk-bundle-konsole-inkl.-ratched-und-clank-rift-apart-4065327148145
-aktiv,Müller,beide,https://www.mueller.de/multi-media/playstation-5/
 aktiv,Müller,Disk,https://www.mueller.de/p/playstation-5-konsole-2675305/
 aktiv,Müller,Digital,https://www.mueller.de/p/playstation-5-konsole-digital-edition-2675308/
 aktiv,Amazon,Disc,https://www.amazon.de/dp/B08H93ZRK9

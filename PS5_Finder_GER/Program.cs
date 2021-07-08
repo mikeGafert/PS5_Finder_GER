@@ -112,10 +112,10 @@ namespace PS5_Finder
                     }
 
                     // Jedes Objekt aus der WebseitenListe überprüfen                
-                    for (int i = 0; i < File.ReadAllLines(urlFilePath).Length; i++)
+                    for (int i = 0; i < File.ReadAllLines(UserURLsPath).Length; i++)
                     {
                         // Webseitenliste erstellen und während der Laufzeit neu einlesen
-                        List<Webseite> WebseitenListe = Extensions.ReadURLFile(urlFilePath);
+                        List<Webseite> WebseitenListe = Extensions.ReadURLFile(UserURLsPath);
 
                         // Inaktive URLs überspringen
                         if (WebseitenListe[i].Aktiv == false)
