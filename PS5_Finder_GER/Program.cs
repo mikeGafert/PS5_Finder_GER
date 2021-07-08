@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 /***************************************************************************************
 *    Title: PS 5 Finder Germany
 *    Author: Mike Gafert
-*    Date: 06.07.2021
-*    Time: 14:11
-*    Code version: 1.3.72
+*    Date: 08.07.2021
+*    Time: 13:00
+*    Code version: 1.3.74
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
@@ -24,18 +24,21 @@ namespace PS5_Finder
         static async Task Main(string[] args)
         {
             // Dokumentenpfade für die Ordner und Files festlegen und die Ordner ggf. erstellen
-            string myDocumentsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); // Systempfad zu EigeneDokumente 
+            string myDocumentsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); // Systempfad zu EigeneDokumente
             string programmFolderPath = Path.Combine(myDocumentsFolderPath, "PS5 Finder"); // Pfad zum Programmordner
             if (!Directory.Exists(programmFolderPath)) { Directory.CreateDirectory(programmFolderPath); } // Falls er nicht existiert, erstellen
-            string websiteCodePath = Path.Combine(programmFolderPath, "Webseitencode"); // Pfad zum Programmordner
+            string roamingPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData); // Systempfad zum Roaming Ordner
+            string roamingFolderPath = Path.Combine(roamingPath, "PS5 Finder"); // Pfad zum Programmordner
+            if (!Directory.Exists(roamingFolderPath)) { Directory.CreateDirectory(roamingFolderPath); } // Falls er nicht existiert, erstellen
+            string websiteCodePath = Path.Combine(roamingFolderPath, "Webseitencode"); // Pfad zum Programmordner
             if (!Directory.Exists(websiteCodePath)) { Directory.CreateDirectory(websiteCodePath); } // Falls er nicht existiert, erstellen
-            string logtxtPath = Path.Combine(programmFolderPath, "log.txt"); // Pfad zur allgemeinen Log datei
-            string errorLogtxtPath = Path.Combine(programmFolderPath, "errorlog.txt"); // Pfad zur Fehler Log Datei
-            string durchlaeufePath = Path.Combine(programmFolderPath, "durchlaeufe.txt"); // Pfad zur Durchläufe datei
-            string botLogPath = Path.Combine(programmFolderPath, "botlog.txt"); // Pfad zur BotLog datei 
+            string logtxtPath = Path.Combine(roamingFolderPath, "log.txt"); // Pfad zur allgemeinen Log datei
+            string errorLogtxtPath = Path.Combine(roamingFolderPath, "errorlog.txt"); // Pfad zur Fehler Log Datei
+            string durchlaeufePath = Path.Combine(roamingFolderPath, "durchlaeufe.txt"); // Pfad zur Durchläufe datei
+            string botLogPath = Path.Combine(roamingFolderPath, "botlog.txt"); // Pfad zur BotLog datei 
             string negativeKeywordsPath = ".\\Ressources\\NegativeKeyWords.txt"; // Pfad zur KeyWords datei
             string userAgentsRessourcesPath = ".\\Ressources\\user-agents.txt"; // Pfad zur KeyWords datei
-            string userAgentsLogPath = Path.Combine(programmFolderPath, "user-agentslog.txt"); // Pfad zur userAgents datei
+            string userAgentsLogPath = Path.Combine(roamingFolderPath, "user-agentslog.txt"); // Pfad zur userAgents datei
             string urlFilePath = ".\\Ressources\\URLs.txt"; // Pfad zur URL datei
             string zugangsdatenAmazonPath = Path.Combine(programmFolderPath, "PwUnAmazon.txt"); // Pfad zur Zugangsdaten datei
             string zugangsdatenUnPwHowToPath = Path.Combine(programmFolderPath, "HOWTO add Username and Password.txt"); // Pfad zur Zugangsdaten HowTo datei
@@ -111,11 +114,13 @@ namespace PS5_Finder
                         sw.WriteLine($"{durchlauf}. Durchlauf um: {date1}:");
                     }
 
-                    // Jedes Objekt aus der WebseitenListe überprüfen                
+                    // Jedes Objekt aus der WebseitenListe überprüfen
                     for (int i = 0; i < File.ReadAllLines(UserURLsPath).Length; i++)
+                    //for (int i = 0; i < File.ReadAllLines(urlFilePath).Length; i++)
                     {
                         // Webseitenliste erstellen und während der Laufzeit neu einlesen
                         List<Webseite> WebseitenListe = Extensions.ReadURLFile(UserURLsPath);
+                        //List<Webseite> WebseitenListe = Extensions.ReadURLFile(urlFilePath);
 
                         // Inaktive URLs überspringen
                         if (WebseitenListe[i].Aktiv == false)
