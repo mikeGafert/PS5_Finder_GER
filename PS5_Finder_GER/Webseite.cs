@@ -30,7 +30,7 @@ namespace PS5_Finder
             if (!Verfuegbar)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                return $"Nein\nURL: {Url}";                
+                return $"Nein";                
             }          
             Console.ForegroundColor = ConsoleColor.Green;
             return $"JA!\nURL: {Url}";            
