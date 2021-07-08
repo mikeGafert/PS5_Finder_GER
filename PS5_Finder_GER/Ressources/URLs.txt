@@ -50,3 +50,4 @@ aktiv,Saturn,Demon Souls + Spider-Man Bundle,https://www.saturn.de/de/product/_s
 aktiv,Saturn,Returnal + Spider-Man Bundle,https://www.saturn.de/de/product/_sony-ps5-returnal-marvel-s-spider-man-miles-morales-2739308.html?utm_source=easymarketing&utm_medium=aff-content&utm_term=52525&utm_campaign=Deeplinkgenerator-AO&emid=60e30a8c6374cb14542b32a8
 aktiv,Saturn,R&C Bundle,https://www.saturn.de/de/product/_sony-ps5-ratchet-clank-rift-apart-2741442.html?utm_source=easymarketing&utm_medium=aff-content&utm_term=52325&utm_campaign=Deeplinkgenerator-AO&emid=60dad89993c65b1aa8424db0
 aktiv,Media Markt,R&C Bundle,https://www.saturn.de/de/product/_sony-ps5-ratchet-clank-rift-apart-2741441.html?utm_source=easymarketing&utm_medium=aff-content&utm_term=52325&utm_campaign=Deeplinkgenerator-AO&emid=60e30a6c253843285a52236a
+aktiv,myBiotea,Mega Tea Bundle,https://mybiotea-gera.de/produkt/playstation5-ratchetclank-residentevil8/

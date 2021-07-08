@@ -191,17 +191,21 @@ namespace PS5_Finder
                             // Eintrag des des fehlers in die errorlog.txt                                
                             Extensions.WriteErrorLog(WebseitenListe, errorLogtxtPath, i, ex);
                             Extensions.wait10SecForMMS(WebseitenListe, i);
+                            Console.ForegroundColor = ConsoleColor.White;
                             continue;
                         }
                         catch (TaskCanceledException ex)
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
+
                             Console.WriteLine(ex.Message);
                             // Eintrag des des fehlers in die errorlog.txt   
                             Extensions.WriteErrorLog(WebseitenListe, errorLogtxtPath, i, ex);
                             Extensions.wait10SecForMMS(WebseitenListe, i);
+
+                            Console.ForegroundColor = ConsoleColor.White;
                             continue;
                         }
-                        Console.ForegroundColor = ConsoleColor.White;
 
                         // Den erhaltenen Inhalt der Webseite in eine txt Datei schrieben
                         Extensions.writeWebsiteToTxtFile(websiteCodePath, i, WebseitenListe, webData);
@@ -272,8 +276,9 @@ namespace PS5_Finder
                         // Eintrag des Ergebnisses für diese Webseite in die log.txt
                         Extensions.WriteLogfile(WebseitenListe, logtxtPath, i);
 
-                        // Ausgabe des Ergebnisses dieser Webseite
+                        // Ausgabe des Ergebnisses dieser Webseite                        
                         Console.WriteLine(WebseitenListe[i]);
+                        Console.ForegroundColor = ConsoleColor.White;
 
                         Extensions.wait10SecForMMS(WebseitenListe, i);
 
