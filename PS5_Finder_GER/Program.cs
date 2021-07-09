@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 /***************************************************************************************
 *    Title: PS 5 Finder Germany
 *    Author: Mike Gafert
-*    Date: 08.07.2021
-*    Time: 16:00
-*    Code version: 1.4.79
+*    Date: 09.07.2021
+*    Time: 09:00
+*    Code version: 1.4.83
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
@@ -145,14 +145,15 @@ namespace PS5_Finder
                         Random random = new Random();
                         int randomIndex = random.Next(userAgentsArray.Length / 2);
                         string userAgent;
-                        if (WebseitenListe[i].Url.ToLower() == "alternate")
-                        {
-                            userAgent = "Mozilla / 5.0(Macintosh; Intel Mac OS X 10_14_6) AppleWebKit / 605.1.15(KHTML, like Gecko) Version / 14.0.2 Safari / 605.1.15";
-                        }
-                        else
-                        {                            
-                            userAgent = userAgentsArray[randomIndex, 1];
-                        }
+                        //if (WebseitenListe[i].Url.ToLower() == "alternate")
+                        //{
+                        //    userAgent = "Mozilla / 5.0(Macintosh; Intel Mac OS X 10_14_6) AppleWebKit / 605.1.15(KHTML, like Gecko) Version / 14.0.2 Safari / 605.1.15";
+                        //}
+                        //else
+                        //{                            
+                        //    userAgent = userAgentsArray[randomIndex, 1];
+                        //}
+                        userAgent = userAgentsArray[randomIndex, 1];
                         client.DefaultRequestHeaders.Add("User-Agent", userAgent);                        
                         //client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"); // Statischer User-Agent
                         client.DefaultRequestHeaders.Add("Connection", "keep-alive");
