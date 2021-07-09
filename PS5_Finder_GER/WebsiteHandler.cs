@@ -118,7 +118,9 @@ namespace PS5_Finder
         {
             string[] KeyWordsArray = new string[] { "Auf Lager", "In den Warenkorb", "Aktion verfügbar" };
             bool verfuegbar = webData.Contains(KeyWordsArray, StringComparison.CurrentCulture);
-            verfuegbar = !webData.Contains("Artikel kann derzeit nicht gekauft werden", StringComparison.CurrentCulture);
+
+            string[] negativeKeyWordsArray = new string[] { "Artikel kann derzeit nicht gekauft werden", "Der Artikel ist zur Zeit leider nicht verfügbar" };
+            verfuegbar = !webData.Contains(negativeKeyWordsArray, StringComparison.CurrentCulture);
 
             using (StreamWriter sw = new StreamWriter(userAgentsAlternateLogPath, true))
             {
@@ -130,3 +132,4 @@ namespace PS5_Finder
         }
     }
 }
+
