@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 *    Title: PS 5 Finder Germany
 *    Author: Mike Gafert
 *    Date: 08.07.2021
-*    Time: 13:00
-*    Code version: 1.4.76
+*    Time: 16:00
+*    Code version: 1.4.79
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
@@ -39,6 +39,7 @@ namespace PS5_Finder
             string negativeKeywordsPath = ".\\Ressources\\NegativeKeyWords.txt"; // Pfad zur KeyWords datei
             string userAgentsRessourcesPath = ".\\Ressources\\user-agents.txt"; // Pfad zur KeyWords datei
             string userAgentsLogPath = Path.Combine(roamingFolderPath, "user-agentslog.txt"); // Pfad zur userAgents datei
+            string userAgentsAlternateLogPath = Path.Combine(roamingFolderPath, "user-agents-Alternate-log.txt"); // Pfad zur userAgents datei
             string urlFilePath = ".\\Ressources\\URLs.txt"; // Pfad zur URL datei
             string zugangsdatenAmazonPath = Path.Combine(programmFolderPath, "PwUnAmazon.txt"); // Pfad zur Zugangsdaten datei
             string zugangsdatenUnPwHowToPath = Path.Combine(programmFolderPath, "HOWTO add Username and Password.txt"); // Pfad zur Zugangsdaten HowTo datei
@@ -70,9 +71,9 @@ namespace PS5_Finder
             int piepen = Convert.ToInt32(Console.ReadLine());
 
             // Autobuy abfragen
-            Console.Write("Möchtest du auf Amazon.de die \"autobuy\" Funktion nutzen? (j/n): ");
-            char autobuyNutzen = Console.ReadLine().ToLower()[0];
-            //char autobuyNutzen = 'n';
+            //Console.Write("Möchtest du auf Amazon.de die \"autobuy\" Funktion nutzen? (j/n): ");
+            //char autobuyNutzen = Console.ReadLine().ToLower()[0];
+            char autobuyNutzen = 'n';
 
             // Benutzernamen und Passwort abfragen
             string[,] zugangsdatenUserEingabe = new string[1, 2];
@@ -239,8 +240,11 @@ namespace PS5_Finder
                                 break;
 
                             case "media markt":
-                            case "saturn":
-                                WebseitenListe[i].Verfuegbar = WebsiteHandlerMMS.CheckWebsite(negativeKeyWords, webData);
+                            case "saturn":                                
+                                break;
+
+                            case "alternate":
+                                WebseitenListe[i].Verfuegbar = WebsiteHandlerAlternate.CheckWebsite(negativeKeyWords, webData, userAgent, userAgentsAlternateLogPath);
                                 break;
 
                             default:

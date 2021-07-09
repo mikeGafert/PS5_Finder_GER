@@ -106,8 +106,26 @@ namespace PS5_Finder
         public static bool CheckWebsite(string[] negativeKeyWords, string webData)
         {
             string[] KeyWordsArray = new string[] { "Abholbereit", "Lieferung", "In den Warenkorb", "Schützen Sie Ihr Gerät mit zusätzlichen Leistungen:" };
-            bool verfuegbar = webData.Contains(negativeKeyWords, StringComparison.CurrentCulture);
+            bool verfuegbar = webData.Contains(KeyWordsArray, StringComparison.CurrentCulture);
             verfuegbar = !webData.Contains("Dieser Artikel ist aktuell nicht verfügbar.", StringComparison.CurrentCulture);
+            return verfuegbar;
+        }
+    }
+
+    static class WebsiteHandlerAlternate
+    {
+        public static bool CheckWebsite(string[] negativeKeyWords, string webData, string userAgent, string userAgentsAlternateLogPath)
+        {
+            string[] KeyWordsArray = new string[] { "Auf Lager", "In den Warenkorb", "Aktion verfügbar" };
+            bool verfuegbar = webData.Contains(KeyWordsArray, StringComparison.CurrentCulture);
+            verfuegbar = !webData.Contains("Artikel kann derzeit nicht gekauft werden", StringComparison.CurrentCulture);
+
+            using (StreamWriter sw = new StreamWriter(userAgentsAlternateLogPath, true))
+            {
+                DateTime dateTime = DateTime.Now;
+                sw.WriteLine($"{dateTime}: {userAgent}");
+            }
+
             return verfuegbar;
         }
     }
