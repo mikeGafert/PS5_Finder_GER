@@ -116,7 +116,7 @@ namespace PS5_Finder
             }
         }
 
-        public static void writeUserAgentStatsLog(string userAgentsPath, string[,] userAgentsArray, int i, List<Webseite> WebseitenListe, int randomIndex)
+        public static void WriteUserAgentStatsLog(string userAgentsPath, string[,] userAgentsArray, int randomIndex)
         {
             int userAgentCount = Convert.ToInt32(userAgentsArray[randomIndex, 0]);
 
@@ -133,7 +133,7 @@ namespace PS5_Finder
 
         }
 
-        public static void writeWebsiteToTxtFile(string websiteCodePath, int i, List<Webseite> WebseitenListe, string webData)
+        public static void WriteWebsiteToTxtFile(string websiteCodePath, int i, List<Webseite> WebseitenListe, string webData)
         {
             string tempPath = Path.Combine(websiteCodePath, $"{WebseitenListe[i].Name} {WebseitenListe[i].Modell}.txt");
             using (StreamWriter sw = new StreamWriter(tempPath))
@@ -142,7 +142,7 @@ namespace PS5_Finder
             }
         }
 
-        public static void writeUnPwHowToFile(string zugangsdatenUnPwHowToPath)
+        public static void WriteUnPwHowToFile(string zugangsdatenUnPwHowToPath)
         {
             using (StreamWriter sw = new StreamWriter(zugangsdatenUnPwHowToPath))
             {
@@ -158,7 +158,7 @@ namespace PS5_Finder
         }
 
         // andere Methoden
-        public static string[,] getUserAgent(string userAgentsRessourcesPath, string userAgentsPath)
+        public static string[,] GetUserAgent(string userAgentsRessourcesPath, string userAgentsPath)
         {
             string[,] userAgentsArray = new string[File.ReadAllLines(userAgentsRessourcesPath).Length, 2];
             if (!File.Exists(userAgentsPath))
@@ -227,7 +227,7 @@ namespace PS5_Finder
             }
         }
 
-        public static void findCaptcha(List<Webseite> WebseitenListe, int i, string webData)
+        public static void FindCaptcha(List<Webseite> WebseitenListe, int i, string webData)
         {
             if (webData.Contains("captcha", StringComparison.CurrentCulture) && webData.Length < 15000) // Falls die Webseite aus weniger als 15000 Zeichen besteht, könnte es eine Captcha Seite sein
             {
@@ -237,7 +237,7 @@ namespace PS5_Finder
             }
         }
 
-        public static void wait10SecForMMS(List<Webseite> WebseitenListe, int i)
+        public static void Wait10SecForMMS(List<Webseite> WebseitenListe, int i)
         {// Bei MMS muss 10 Sekunden zwischen den Abfragen gewartet werden                        
             switch (WebseitenListe[i].Name.ToLower())
             {

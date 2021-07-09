@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 *    Title: PS 5 Finder Germany
 *    Author: Mike Gafert
 *    Date: 09.07.2021
-*    Time: 12:00
-*    Code version: 1.4.85
+*    Time: 13:25
+*    Code version: 1.4.86
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
@@ -46,7 +46,7 @@ namespace PS5_Finder
             string UserURLsPath = Path.Combine(programmFolderPath, "URLs.txt"); // Pfad zur Zugangsdaten HowTo datei
 
             // Schreiben der Zugangsdaten HowTo datei
-            Extensions.writeUnPwHowToFile(zugangsdatenUnPwHowToPath);
+            Extensions.WriteUnPwHowToFile(zugangsdatenUnPwHowToPath);
             // URL Datei aus den Vorgaben kopieren und speichern
             if (!File.Exists(UserURLsPath))
             {
@@ -54,7 +54,7 @@ namespace PS5_Finder
             }
 
             // Dateien einlesen, die beim Programmstart gelesen werden
-            string[,] userAgentsArray = Extensions.getUserAgent(userAgentsRessourcesPath, userAgentsLogPath);
+            string[,] userAgentsArray = Extensions.GetUserAgent(userAgentsRessourcesPath, userAgentsLogPath);
             // Keyword aus der KeyWords.txt einlesen und in ein Array laden
             string[] negativeKeyWords = Extensions.ReadFileToArray(negativeKeywordsPath);
 
@@ -169,7 +169,7 @@ namespace PS5_Finder
                             webData = await response.Content.ReadAsStringAsync();
 
                             // Statistische Werte für den verwendeten UserAgent in die UserAgentLogfile schreiben
-                            Extensions.writeUserAgentStatsLog(userAgentsLogPath, userAgentsArray, i, WebseitenListe, randomIndex);
+                            Extensions.WriteUserAgentStatsLog(userAgentsLogPath, userAgentsArray, randomIndex);
                         }
                         // Falls die Webseite nicht ausgelesen werden kann
                         catch (HttpRequestException ex)
@@ -200,7 +200,7 @@ namespace PS5_Finder
 
                             // Eintrag des des fehlers in die errorlog.txt                                
                             Extensions.WriteErrorLog(WebseitenListe, errorLogtxtPath, i, ex);
-                            Extensions.wait10SecForMMS(WebseitenListe, i);
+                            Extensions.Wait10SecForMMS(WebseitenListe, i);
                             Console.ForegroundColor = ConsoleColor.White;
                             continue;
                         }
@@ -211,14 +211,14 @@ namespace PS5_Finder
                             Console.WriteLine(ex.Message);
                             // Eintrag des des fehlers in die errorlog.txt   
                             Extensions.WriteErrorLog(WebseitenListe, errorLogtxtPath, i, ex);
-                            Extensions.wait10SecForMMS(WebseitenListe, i);
+                            Extensions.Wait10SecForMMS(WebseitenListe, i);
 
                             Console.ForegroundColor = ConsoleColor.White;
                             continue;
                         }
 
                         // Den erhaltenen Inhalt der Webseite in eine txt Datei schrieben
-                        Extensions.writeWebsiteToTxtFile(websiteCodePath, i, WebseitenListe, webData);
+                        Extensions.WriteWebsiteToTxtFile(websiteCodePath, i, WebseitenListe, webData);
 
                         // reCaptcha erkennung (Funktioniert nicht)
                         //Extensions.findCaptcha(WebseitenListe, i, webData);
@@ -293,7 +293,7 @@ namespace PS5_Finder
                         Console.WriteLine(WebseitenListe[i]);
                         Console.ForegroundColor = ConsoleColor.White;
 
-                        Extensions.wait10SecForMMS(WebseitenListe, i);
+                        Extensions.Wait10SecForMMS(WebseitenListe, i);
 
                         // Webseitenliste leeren, da sie zu Beginn der nächsten schleife neu eingelesen wird
                         WebseitenListe.Clear();
