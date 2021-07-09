@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS5_Finder_GER", "PS5_Finder_GER\PS5_Finder_GER.csproj", "{AE2DA204-F1BE-4D8D-906A-EA87E161B32B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PS5_Finder_GER", "PS5_Finder_GER\PS5_Finder_GER.csproj", "{AE2DA204-F1BE-4D8D-906A-EA87E161B32B}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{D6CA812D-B7E4-4620-9E7F-D8E2E8236C0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{AE2DA204-F1BE-4D8D-906A-EA87E161B32B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE2DA204-F1BE-4D8D-906A-EA87E161B32B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE2DA204-F1BE-4D8D-906A-EA87E161B32B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6CA812D-B7E4-4620-9E7F-D8E2E8236C0B}.Debug|Any CPU.ActiveCfg = Debug
+		{D6CA812D-B7E4-4620-9E7F-D8E2E8236C0B}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
