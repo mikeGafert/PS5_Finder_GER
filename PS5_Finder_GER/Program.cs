@@ -141,11 +141,19 @@ namespace PS5_Finder
                     retry:
 
                         // Zufälligen User-Agent auswählen und Request Header Optionen setzen
-                        client.DefaultRequestHeaders.Clear();
+                        client.DefaultRequestHeaders.Clear();                                              
                         Random random = new Random();
                         int randomIndex = random.Next(userAgentsArray.Length / 2);
-                        string userAgent = userAgentsArray[randomIndex, 1];
-                        client.DefaultRequestHeaders.Add("User-Agent", userAgent);
+                        string userAgent;
+                        if (WebseitenListe[i].Url.ToLower() == "alternate")
+                        {
+                            userAgent = "Mozilla / 5.0(Macintosh; Intel Mac OS X 10_14_6) AppleWebKit / 605.1.15(KHTML, like Gecko) Version / 14.0.2 Safari / 605.1.15";
+                        }
+                        else
+                        {                            
+                            userAgent = userAgentsArray[randomIndex, 1];
+                        }
+                        client.DefaultRequestHeaders.Add("User-Agent", userAgent);                        
                         //client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"); // Statischer User-Agent
                         client.DefaultRequestHeaders.Add("Connection", "keep-alive");
                         client.DefaultRequestHeaders.Add("Referer", "https://www.google.de/");
@@ -240,7 +248,7 @@ namespace PS5_Finder
                                 break;
 
                             case "media markt":
-                            case "saturn":                                
+                            case "saturn":
                                 break;
 
                             case "alternate":
