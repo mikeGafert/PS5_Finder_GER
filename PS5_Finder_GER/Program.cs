@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 *    Author: Mike Gafert
 *    Date: 09.07.2021
 *    Time: 13:25
-*    Code version: 1.4.86
+*    Code version: 1.4.87
 *    Availability: https://github.com/Gafert-IT/PS5_Finder_GER
 *    License: GNU General Public License v3.0
 *
