@@ -18,6 +18,12 @@
     <PackageReference Include="Selenium.WebDriver" Version="4.0.0-beta4" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="92.0.4515.4300-beta" />
     <PackageReference Include="TwitchLib" Version="3.2.0" />
+    <PackageReference Include="TwitchLib.Api" Version="3.2.4-preview-fc7c5711a8dfc22ae7b2777b6dcabd03a5aac089" />
+    <PackageReference Include="TwitchLib.Api.Core" Version="3.2.4-preview-fc7c5711a8dfc22ae7b2777b6dcabd03a5aac089" />
+    <PackageReference Include="TwitchLib.Client" Version="3.2.3-preview-94b33cd801bf51e1d81b179ce10c7d896072b4c3" />
+    <PackageReference Include="TwitchLib.Client.Enums" Version="3.2.3-preview-94b33cd801bf51e1d81b179ce10c7d896072b4c3" />
+    <PackageReference Include="TwitchLib.Client.Models" Version="3.2.3-preview-94b33cd801bf51e1d81b179ce10c7d896072b4c3" />
+    <PackageReference Include="TwitchLib.Communication" Version="1.0.3" />
   </ItemGroup>
 
   <ItemGroup>

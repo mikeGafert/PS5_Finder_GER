@@ -1,10 +1,12 @@
-﻿using System;
+﻿using PS5_Finder_GER;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using TwitchLib.Client;
 
 /***************************************************************************************
 *    Title: PS 5 Finder Germany
@@ -268,6 +270,8 @@ namespace PS5_Finder
                             // Es wird ein akustisches Signal in Form von Piepen abgespielt
                             for (int j = 0; j < piepen; j++)
                             {
+                                TwitchClient client2;
+                                client2.PostLink(WebseitenListe, i);
                                 Console.Beep();
                             }
 
