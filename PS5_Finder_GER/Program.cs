@@ -270,8 +270,8 @@ namespace PS5_Finder
                             // Es wird ein akustisches Signal in Form von Piepen abgespielt
                             for (int j = 0; j < piepen; j++)
                             {
-                                TwitchClient client2;
-                                client2.PostLink(WebseitenListe, i);
+                                TwitchBot Bot = new TwitchBot();
+                                Bot.PostLink(WebseitenListe, i);
                                 Console.Beep();
                             }
 
